@@ -2,6 +2,7 @@ package belajar.kotlin.unit.test
 
 import belajar.kotlin.unit.test.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.DisplayNameGeneration
 import org.junit.jupiter.api.Test
@@ -39,5 +40,10 @@ class CalculatorTest {
         assertThrows<IllegalArgumentException> {
             calculator.divide(100, 0)
         }
+    }
+
+    @Test
+    @Disabled("Coming soon")
+    fun testComingSoon() {
     }
 }
