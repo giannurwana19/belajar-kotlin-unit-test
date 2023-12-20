@@ -3,7 +3,7 @@ package belajar.kotlin.unit.test.generator
 import org.junit.jupiter.api.DisplayNameGenerator
 import java.lang.reflect.Method
 
-interface SimpleDisplayNameGenerator : DisplayNameGenerator {
+class SimpleDisplayNameGenerator : DisplayNameGenerator {
     /**
      * Generate a display name for the given top-level or `static` nested test class.
      *
