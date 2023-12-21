@@ -4,6 +4,7 @@ import belajar.kotlin.unit.test.generator.SimpleDisplayNameGenerator
 import org.junit.jupiter.api.AfterAll
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.Assumptions.*
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
@@ -90,5 +91,12 @@ class CalculatorTest {
         }
 
         println("Test not aborted")
+    }
+
+    @Test
+    fun testAssumption() {
+        assumeTrue("DEV" == System.getenv("PROFILE"))
+
+        println("Test not aborted because dev profile")
     }
 }
