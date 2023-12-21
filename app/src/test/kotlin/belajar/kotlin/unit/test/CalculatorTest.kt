@@ -1,7 +1,11 @@
 package belajar.kotlin.unit.test
 
 import belajar.kotlin.unit.test.generator.SimpleDisplayNameGenerator
+import org.junit.jupiter.api.AfterAll
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions
+import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.DisplayNameGeneration
@@ -13,6 +17,30 @@ import org.junit.jupiter.api.assertThrows
 @DisplayNameGeneration(SimpleDisplayNameGenerator::class)
 class CalculatorTest {
     private val calculator = Calculator()
+
+    companion object {
+        @BeforeAll
+        @JvmStatic
+        fun beforeAll() {
+            println("Sebelum semua unit test")
+        }
+
+        @AfterAll
+        @JvmStatic
+        fun afterAll() {
+            println("Setelah semua unit test")
+        }
+    }
+
+    @BeforeEach
+    fun beforeEach() {
+        println("Before Eech")
+    }
+
+    @AfterEach
+    fun afterEach() {
+        println("After Each")
+    }
 
     @Test
 //    @DisplayName("Test for function calculator.add(10,10)")
