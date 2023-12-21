@@ -11,6 +11,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.DisplayNameGeneration
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
+import org.opentest4j.TestAbortedException
 
 
 //@DisplayName("Test Calculator Test")
@@ -73,5 +74,21 @@ class CalculatorTest {
     @Test
     @Disabled("Coming soon")
     fun testComingSoon() {
+    }
+
+    /**
+     * Kadang kita ingin membatalkan unit test ketika kondisi tertentu terjadi
+     * Untuk membatalkan, kita bisa menggunakan exception TestAbortedException
+     * Jika JUnit mendapatkan exception TestAbortedException, secara otomatis test tersebut akan dibatalkan
+     */
+    @Test
+    fun testAborted() {
+//        val profile = System.getenv()["PROFILE"]
+        val profile = System.getenv("PROFILE")
+        if ("DEV" != profile) {
+            throw TestAbortedException()
+        }
+
+        println("Test not aborted")
     }
 }
