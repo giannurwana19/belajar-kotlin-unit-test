@@ -37,5 +37,18 @@ application {
 
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
+
     useJUnitPlatform()
+
+    // menjalankan test kecuali tag integration-test
+//    useJUnitPlatform {
+//        excludeTags("integration-test")
+//    }
+}
+
+// menjalankan hanya integration test
+tasks.register("integration-test", Test::class) {
+    useJUnitPlatform {
+        includeTags("integration-test")
+    }
 }
