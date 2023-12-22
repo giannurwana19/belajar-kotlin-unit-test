@@ -7,13 +7,7 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.junit.jupiter.api.extension.Extensions
 import java.util.Random
 
-@Extensions(
-    value = [
-        ExtendWith(RandomParameterResolver::class)
-    ]
-)
-class RandomCalculatorTest {
-    private val calculator = Calculator()
+class RandomCalculatorTest : ParentCalculatorTest() {
 
     @Test
     fun testRandom(random: Random) {
