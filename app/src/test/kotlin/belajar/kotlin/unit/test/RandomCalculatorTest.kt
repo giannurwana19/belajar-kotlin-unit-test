@@ -7,11 +7,37 @@ import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.RepetitionInfo
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInfo
-import org.junit.jupiter.api.extension.ExtendWith
-import org.junit.jupiter.api.extension.Extensions
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
+import org.junit.jupiter.params.provider.ValueSource
 import java.util.Random
 
 class RandomCalculatorTest : ParentCalculatorTest() {
+
+    companion object {
+        @JvmStatic
+        fun parameterSource(): List<Int> {
+            return listOf(10, 20, 30, 40, 50)
+        }
+    }
+
+    @DisplayName("Test calculator with parameter")
+    @ParameterizedTest(name = "{displayName} with data {0}")
+    @ValueSource(ints = [10, 20, 30, 40, 50])
+    fun testWithParameter(value: Int) {
+        val result = calculator.add(value, value)
+        Assertions.assertEquals(value + value, result)
+        println(result)
+    }
+
+    @ParameterizedTest
+    @MethodSource(value = ["parameterSource"])
+    fun testWithMethodSoruce(value: Int) {
+        val result = calculator.add(value, value)
+        Assertions.assertEquals(value + value, result)
+        println(result)
+    }
+
 
     @Test
     fun testRandom(random: Random) {
@@ -40,4 +66,5 @@ class RandomCalculatorTest : ParentCalculatorTest() {
 
         Assertions.assertEquals(first + second, result)
     }
+
 }
