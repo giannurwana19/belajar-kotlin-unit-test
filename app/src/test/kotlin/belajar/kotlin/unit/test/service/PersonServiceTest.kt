@@ -51,4 +51,23 @@ class PersonServiceTest {
         Assertions.assertEquals("gian", person.id)
         Assertions.assertEquals("Gian Nurwana", person.name)
     }
+
+    @Test
+    fun testRegisterPersonNameIsBlank() {
+        assertThrows<IllegalArgumentException> {
+            personService.register("")
+        }
+    }
+
+    @Test
+    fun testRegisterSuccess() {
+        val person = personService.register("Gian")
+
+        Assertions.assertEquals("Gian", person.name)
+        Assertions.assertNotNull(person.id)
+
+        // verifikasi bahwa mocking object dipanggil
+        Mockito.verify(personRepository, Mockito.times(1))
+            .insert(Person(person.id, "Gian"))
+    }
 }
