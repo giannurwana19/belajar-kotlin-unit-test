@@ -21,10 +21,12 @@ repositories {
 
 dependencies {
     // Use the JUnit 5 integration.
-    implementation("org.junit.jupiter:junit-jupiter:5.10.1")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
 
     // This dependency is used by the application.
     implementation("com.google.guava:guava:31.1-jre")
+
+    testImplementation("org.mockito:mockito-junit-jupiter:5.8.0")
 }
 
 application {
